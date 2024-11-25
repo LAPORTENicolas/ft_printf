@@ -2,7 +2,7 @@ SOURCES = ft_printf.c ft_putchar_fd.c ft_putstr_fd.c ft_puthex_fd.c ft_putnbr_fd
 OBJECTS = ${SOURCES:.c=.o}
 NAME = libftprintf.a
 CC = cc
-FLAGS = -Wall -Wextra -g3
+FLAGS = -Wall -Wextra -Werror
 
 all: ${NAME}
 
@@ -10,7 +10,7 @@ ${NAME}: ${OBJECTS}
 	ar -crs ${NAME} ${OBJECTS}
 
 ${OBJECTS}: ${SOURCES}
-	${CC} ${FLAGS} -c ${SOURCES} -g3
+	${CC} ${FLAGS} -c ${SOURCES}
 
 clean:
 	rm -rf ${OBJECTS}

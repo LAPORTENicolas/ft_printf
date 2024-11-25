@@ -35,3 +35,4 @@ int	ft_putunbr_fd(unsigned int n, int fd)
 		return (ft_putchar_fd('0', fd));
 	return (ft_print(n, fd));
 }
+
