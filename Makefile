@@ -9,8 +9,8 @@ all: ${NAME}
 ${NAME}: ${OBJECTS}
 	ar -crs ${NAME} ${OBJECTS}
 
-${OBJECTS}: ${SOURCES}
-	${CC} ${FLAGS} -c ${SOURCES}
+%.o: %.c
+	${CC} ${FLAGS} -c $< -o $@
 
 clean:
 	rm -rf ${OBJECTS}
