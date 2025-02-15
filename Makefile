@@ -1,22 +1,44 @@
 SOURCES = ft_printf.c ft_putchar_fd.c ft_putstr_fd.c ft_puthex_fd.c ft_putnbr_fd.c ft_putfloat_fd.c
 OBJECTS = ${SOURCES:.c=.o}
-NAME = libftprintf.a
-CC = cc
-FLAGS = -Wall -Wextra -Werror
+NAME 		= ft_printf.a
+CC 			= cc
+FLAGS 	= -Wall -Wextra -Werror
+OBJECTS = ${SOURCES:.c=.o}
+CC      = cc
+FLAGS   = -Wall -Werror -Wextra
+LIBFT   = libft/
+MLX     = mlx/
+GREEN   = \033[92m
+BLUE    = \033[94m
+ORANGE  = \033[93m
+RED     = \033[91m
+BOLD		= \033[1m
+WHITE   = \033[0m
+count = 0
 
 all: ${NAME}
 
 ${NAME}: ${OBJECTS}
-	ar -crs ${NAME} ${OBJECTS}
+	@ar -crs ${NAME} ${OBJECTS}
+	@printf "\n${GREEN}✅ Compilation ${BOLD}${NAME}${WHITE}${GREEN} Termine !\n"; \
 
 %.o: %.c
-	${CC} ${FLAGS} -c $< -o $@
+	@${CC} ${FLAGS} -c $< -o $@
+	@$(eval count=$(shell echo $$(($(count)+1))))  # Incrémenter le compteur
+	@if ((${count} % 2 == 0)); then \
+		printf "${BLUE}\r⌛ Compilation ${BOLD}$< ${WHITE}${BLUE}to ${BOLD}$@${WHITE}${BLUE}"; \
+	else \
+		printf "${BLUE}\r⏳ Compilation ${BOLD}$< ${WHITE}${BLUE}to ${BOLD}$@${WHITE}${BLUE}"; \
+	fi
 
 clean:
-	rm -rf ${OBJECTS}
+	@rm -rf ${OBJECTS}
+	@printf "${ORANGE}🗑️ Clean ${BOLD}${OBJECTS}\n${WHITE}"; \
+
 
 fclean: clean
-	rm -rf ${NAME}
+	@rm -rf ${NAME}
+	@printf "${RED}🗑️ Clean ${BOLD}${NAME}\n${WHITE}"; \
 
 re: fclean all
 
