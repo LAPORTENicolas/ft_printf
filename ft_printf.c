@@ -13,7 +13,7 @@
 #include <stdarg.h>
 #include "ft_printf.h"
 
-unsigned int	ft_strlen(const char *s)
+static unsigned int	ft_strlen(const char *s)
 {
 	unsigned int	i;
 
