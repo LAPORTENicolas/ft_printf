@@ -22,6 +22,5 @@ int	ft_puthex_fd(unsigned long long int n, int fd, int suffix);
 int	ft_putnbr_fd(int n, int fd);
 int	ft_putunbr_fd(unsigned int n, int fd);
 int	ft_printhex2(unsigned int n, int fd, char *base);
-int	ft_printfloat_fd(double n, int fd);
 
 #endif // !FT_PRINTF_H
