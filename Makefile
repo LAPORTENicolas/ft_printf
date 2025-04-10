@@ -14,7 +14,6 @@ ORANGE  = \033[93m
 RED     = \033[91m
 BOLD		= \033[1m
 WHITE   = \033[0m
-count = 0
 
 all: ${NAME}
 
@@ -25,12 +24,10 @@ ${NAME}: ${OBJECTS}
 %.o: %.c
 	@${CC} ${FLAGS} -c $< -o $@
 	printf "${BLUE}\r⏳ Compilation ${BOLD}$< ${WHITE}${BLUE}to ${BOLD}$@${WHITE}${BLUE}"; \
-	fi
 
 clean:
 	@rm -rf ${OBJECTS}
 	@printf "${ORANGE}🗑️ Clean ${BOLD}${OBJECTS}\n${WHITE}"; \
-
 
 fclean: clean
 	@rm -rf ${NAME}
